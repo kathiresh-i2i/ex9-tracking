@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BrandSpark</title>
+    <meta
+      name="description"
+      content="BrandSpark helps teams turn brand insights into action—faster."
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="container header__inner">
+        <div class="logo" aria-label="BrandSpark">BrandSpark</div>
+        <button id="bookDemoBtnTop" class="btn btn--secondary" type="button">
+          Book a demo
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="container hero__inner">
+          <div class="hero__copy">
+            <h1 class="hero__title">BrandSpark</h1>
+            <p class="hero__subtitle">
+              A simple way to spark demand with clear positioning, consistent
+              messaging, and better go-to-market alignment.
+            </p>
+
+            <div class="hero__cta">
+              <button id="bookDemoBtn" class="btn btn--primary" type="button">
+                Book a demo
+              </button>
+              <p class="hero__note" id="inlineStatus" aria-live="polite"></p>
+            </div>
+
+            <ul class="bullets">
+              <li>Capture what resonates with customers</li>
+              <li>Generate on-brand messaging faster</li>
+              <li>Keep teams aligned across channels</li>
+            </ul>
+          </div>
+
+          <div class="hero__card" aria-label="Product preview">
+            <div class="card">
+              <div class="card__title">Demo preview</div>
+              <div class="card__body">
+                <div class="stat">
+                  <div class="stat__label">Message consistency</div>
+                  <div class="stat__value">↑ 32%</div>
+                </div>
+                <div class="stat">
+                  <div class="stat__label">Time to launch</div>
+                  <div class="stat__value">↓ 41%</div>
+                </div>
+                <div class="stat">
+                  <div class="stat__label">Cross-team alignment</div>
+                  <div class="stat__value">↑ 2.1×</div>
+                </div>
+              </div>
+              <div class="card__footer">
+                Request a demo to see your personalized walkthrough.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container section__inner">
+          <h2 class="section__title">Built for fast-moving teams</h2>
+          <div class="grid">
+            <div class="feature">
+              <div class="feature__title">Positioning clarity</div>
+              <div class="feature__text">
+                Turn messy inputs into crisp value props your whole team can
+                use.
+              </div>
+            </div>
+            <div class="feature">
+              <div class="feature__title">On-brand output</div>
+              <div class="feature__text">
+                Maintain voice and tone across campaigns, ads, email, and web.
+              </div>
+            </div>
+            <div class="feature">
+              <div class="feature__title">Ready-to-ship assets</div>
+              <div class="feature__text">
+                Export messaging frameworks and snippets your team can reuse.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer__inner">
+        <span>© <span id="year"></span> BrandSpark</span>
+        <button id="bookDemoBtnFooter" class="btn btn--link" type="button">
+          Book a demo
+        </button>
+      </div>
+    </footer>
+
+    <!-- Modal -->
+    <div
+      id="demoModal"
+      class="modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="demoModalTitle"
+      aria-hidden="true"
+    >
+      <div class="modal__backdrop" data-close-modal="true"></div>
+      <div class="modal__panel" role="document">
+        <div class="modal__header">
+          <h3 id="demoModalTitle" class="modal__title">Book a demo</h3>
+          <button
+            class="iconBtn"
+            type="button"
+            aria-label="Close"
+            data-close-modal="true"
+          >
+            ✕
+          </button>
+        </div>
+
+        <form id="demoForm" class="form" novalidate>
+          <label class="form__label" for="emailInput">Work email</label>
+          <input
+            id="emailInput"
+            name="email"
+            class="form__input"
+            type="email"
+            inputmode="email"
+            autocomplete="email"
+            placeholder="you@company.com"
+            required
+          />
+          <p id="emailHelp" class="form__help">
+            We’ll use this to reach out and schedule your demo.
+          </p>
+
+          <p id="formError" class="form__error" role="alert"></p>
+          <p id="formSuccess" class="form__success" role="status"></p>
+
+          <div class="form__actions">
+            <button id="submitBtn" class="btn btn--primary" type="submit">
+              Submit
+            </button>
+            <button class="btn btn--secondary" type="button" data-close-modal="true">
+              Cancel
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
+
+
