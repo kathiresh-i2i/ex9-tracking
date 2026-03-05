@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Terms of Service — BrandSpark</title>
+    <meta name="description" content="Terms of Service for using Expert9's platform." />
+    <link rel="stylesheet" href="%PUBLIC_URL%/styles.css" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="container header__inner">
+        <a class="logo" href="/" aria-label="BrandSpark">BrandSpark</a>
+        <a class="btn btn--secondary" href="/">Back to home</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="section">
+        <div class="container section__inner">
+          <h1 class="section__title">Terms of Service</h1>
+          <p class="section__text">
+            By accessing or using Expert9's platform, you agree to be bound by
+            these Terms of Service. If you disagree with any part of these
+            terms, you may not access the platform.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer__inner">
+        <span>© <span id="year"></span> BrandSpark</span>
+        <a class="btn btn--link" href="/">Home</a>
+      </div>
+    </footer>
+
+    <script>
+      var yearEl = document.querySelector("#year");
+      if (yearEl) yearEl.textContent = String(new Date().getFullYear());
+    </script>
+  </body>
+</html>

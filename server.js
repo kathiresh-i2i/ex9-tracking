@@ -2,12 +2,16 @@
 // HTTP  : http://localhost:5500/
 // HTTPS : https://localhost:5501/  (with local self-signed cert)
 //
+// When dist/ exists (after npm run build), serves from dist/. Otherwise serves from project root.
+//
 // Routes:
 // - /, /index.html, /index.html/               -> index.html
 // - /index.html/thanks.html/ (and canonical)   -> thanks.html
 // - /thanks.html, /thanks.html/                -> thanks.html
 // - /styles.css                                -> styles.css
-// - /app.jsx                                   -> app.jsx
+// - /app.jsx (dev only)                        -> app.jsx
+// - /assets/* (build only)                     -> dist/assets/*
+// - /terms/, /terms.html                       -> terms.html
 // Everything else -> 404
 
 const http = require("http");
@@ -16,11 +20,29 @@ const fs = require("fs");
 const path = require("path");
 const selfsigned = require("selfsigned");
 
-// IMPORTANT: We run HTTPS on 5501 (for https://localhost:5501/...)
-// and plain HTTP on 5500. You cannot serve both HTTP and HTTPS on the same port.
+// Serve from dist/ after build, otherwise from project root
+const DIST_DIR = path.join(__dirname, "dist");
+const ROOT_DIR = fs.existsSync(DIST_DIR) ? DIST_DIR : __dirname;
+
 const HTTPS_PORT = 5501;
 const HTTP_PORT = 5500;
-const ROOT_DIR = __dirname;
+
+function getContentType(filepath) {
+  const ext = path.extname(filepath).toLowerCase();
+  const map = {
+    ".js": "application/javascript; charset=utf-8",
+    ".css": "text/css; charset=utf-8",
+    ".json": "application/json; charset=utf-8",
+    ".ico": "image/x-icon",
+    ".png": "image/png",
+    ".jpg": "image/jpeg",
+    ".jpeg": "image/jpeg",
+    ".svg": "image/svg+xml",
+    ".woff": "font/woff",
+    ".woff2": "font/woff2",
+  };
+  return map[ext] || "application/octet-stream";
+}
 
 function sendFile(res, filepath, contentType) {
   fs.readFile(filepath, (err, data) => {
@@ -75,7 +97,18 @@ function handleRequest(req, res) {
     );
   }
 
-  if (url === "/app.jsx") {
+  // Vite build output (only when serving from dist)
+  if (ROOT_DIR === DIST_DIR && url.startsWith("/assets/")) {
+    const assetPath = path.join(ROOT_DIR, url.replace(/^\//, ""));
+    return sendFile(
+      res,
+      assetPath,
+      getContentType(assetPath)
+    );
+  }
+
+  // Raw app.jsx only when serving from project root (dev without build)
+  if (ROOT_DIR === __dirname && url === "/app.jsx") {
     return sendFile(
       res,
       path.join(ROOT_DIR, "app.jsx"),

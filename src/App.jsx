@@ -1,4 +1,4 @@
-const { useState, useEffect } = React;
+import { useState, useEffect } from "react";
 
 function isValidEmail(email) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(email).trim());
@@ -30,9 +30,8 @@ function App() {
       return;
     }
 
-    // Simulated delay, then redirect to thank-you page (nested under /index.html/)
     setTimeout(() => {
-      window.location.href = "/index.html/thanks.html/";
+      window.location.href = "/thanks.html";
     }, 500);
   };
 
@@ -136,7 +135,7 @@ function App() {
       <footer className="footer">
         <div className="container footer__inner">
           <span>
-            <a href="/terms/" className="footer__link">
+            <a href="/terms.html" className="footer__link">
               Terms of Service
             </a>{" "}
             · © <span>{year}</span> BrandSpark
@@ -151,7 +150,6 @@ function App() {
         </div>
       </footer>
 
-      {/* Modal */}
       <div
         className="modal"
         role="dialog"
@@ -163,7 +161,7 @@ function App() {
         <div
           className="modal__backdrop"
           onClick={() => setIsOpen(false)}
-        ></div>
+        />
         <div className="modal__panel" role="document">
           <div className="modal__header">
             <h3 id="demoModalTitle" className="modal__title">
@@ -222,10 +220,4 @@ function App() {
   );
 }
 
-const rootEl = document.getElementById("root");
-if (rootEl) {
-  const root = ReactDOM.createRoot(rootEl);
-  root.render(<App />);
-}
-
-
+export default App;
