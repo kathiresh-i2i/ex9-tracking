@@ -1,0 +1,17 @@
+{
+  "name": "expert9webpage",
+  "version": "1.0.0",
+  "description": "Simple static marketing webpage for **BrandSpark** with a **Book a demo** button that collects a user's email and shows a successful submission message (with basic email validation).",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "selfsigned": "^5.5.0"
+  }
+}
