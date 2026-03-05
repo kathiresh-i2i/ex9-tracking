@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 export default function AboutPage({ onBookDemo }) {
   return (
     <section className="page-section page-section--centered">
-      <div className="container container--narrow">
+      <div className="container--narrow">
         <h1 className="page-title">About BrandSpark</h1>
         <p className="page-lead">
           We help teams turn brand insights into action—faster. BrandSpark
@@ -16,11 +16,11 @@ export default function AboutPage({ onBookDemo }) {
           a new product or scaling campaigns, BrandSpark keeps everyone on the
           same page.
         </p>
-        <div className="page-actions">
+        <div className="page-actions page-actions--center">
           <button type="button" className="btn btn--primary" onClick={onBookDemo}>
             Book a demo
           </button>
-          <Link to="/features" className="btn btn--outline">
+          <Link to="/features/" className="btn btn--outline">
             View features
           </Link>
         </div>

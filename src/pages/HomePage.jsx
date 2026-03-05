@@ -4,7 +4,7 @@ export default function HomePage({ onBookDemo }) {
   return (
     <>
       <section className="page-hero">
-        <div className="container page-hero__inner">
+        <div className="page-hero__inner">
           <div className="page-hero__content">
             <h1 className="page-hero__title">Turn brand insights into action</h1>
             <p className="page-hero__subtitle">
@@ -19,7 +19,7 @@ export default function HomePage({ onBookDemo }) {
               >
                 Book a demo
               </button>
-              <Link to="/features" className="btn btn--outline btn--lg">
+              <Link to="/features/" className="btn btn--outline btn--lg">
                 See features
               </Link>
             </div>
@@ -55,9 +55,8 @@ export default function HomePage({ onBookDemo }) {
       </section>
 
       <section className="page-section">
-        <div className="container">
-          <h2 className="page-section__title">Built for fast-moving teams</h2>
-          <div className="feature-grid">
+        <h2 className="page-section__title">Built for fast-moving teams</h2>
+        <div className="feature-grid">
             <article className="feature-card">
               <h3 className="feature-card__title">Positioning clarity</h3>
               <p className="feature-card__text">
@@ -77,7 +76,6 @@ export default function HomePage({ onBookDemo }) {
               </p>
             </article>
           </div>
-        </div>
       </section>
     </>
   );

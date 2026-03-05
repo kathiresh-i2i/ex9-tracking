@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { BrowserRouter, Routes, Route, useNavigate, useLocation } from "react-router-dom";
 import Layout from "./components/Layout";
 import DemoModal from "./components/DemoModal";
 import HomePage from "./pages/HomePage";
@@ -7,6 +7,18 @@ import AboutPage from "./pages/AboutPage";
 import FeaturesPage from "./pages/FeaturesPage";
 import ThanksPage from "./pages/ThanksPage";
 import TermsPage from "./pages/TermsPage";
+
+function TrailingSlashRedirect() {
+  const location = useLocation();
+  const navigate = useNavigate();
+  useEffect(() => {
+    const { pathname } = location;
+    if (pathname !== "/" && pathname !== "" && !pathname.endsWith("/")) {
+      navigate(pathname + "/", { replace: true });
+    }
+  }, [location, navigate]);
+  return null;
+}
 
 function AppRoutes() {
   const [modalOpen, setModalOpen] = useState(false);
@@ -17,11 +29,12 @@ function AppRoutes() {
   const handleModalClose = () => setModalOpen(false);
   const handleDemoSuccess = () => {
     setModalOpen(false);
-    setTimeout(() => navigate("/thanks"), 400);
+    setTimeout(() => navigate("/thanks/"), 400);
   };
 
   return (
     <>
+      <TrailingSlashRedirect />
       <Routes>
         <Route element={<Layout onBookDemo={handleBookDemo} year={year} />}>
           <Route index element={<HomePage onBookDemo={handleBookDemo} />} />

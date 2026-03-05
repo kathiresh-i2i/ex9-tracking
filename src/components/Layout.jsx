@@ -2,16 +2,17 @@ import { Outlet, Link, useLocation } from "react-router-dom";
 
 const NAV_LINKS = [
   { to: "/", label: "Home" },
-  { to: "/about", label: "About" },
-  { to: "/features", label: "Features" },
+  { to: "/about/", label: "About" },
+  { to: "/features/", label: "Features" },
 ];
 
 export default function Layout({ onBookDemo, year }) {
   const location = useLocation();
 
   const isActive = (path) => {
-    if (path === "/") return location.pathname === "/";
-    return location.pathname.startsWith(path);
+    if (path === "/") return location.pathname === "/" || location.pathname === "";
+    const normalized = path.replace(/\/$/, "");
+    return location.pathname === path || location.pathname === normalized || location.pathname.startsWith(normalized + "/");
   };
 
   return (
@@ -47,13 +48,15 @@ export default function Layout({ onBookDemo, year }) {
       </header>
 
       <main className="site-main">
-        <Outlet />
+        <div className="container site-main__inner">
+          <Outlet />
+        </div>
       </main>
 
       <footer className="site-footer">
         <div className="container site-footer__inner">
           <span className="site-footer__legal">
-            <Link to="/terms" className="site-footer__link">
+            <Link to="/terms/" className="site-footer__link">
               Terms of Service
             </Link>
             {" · "}

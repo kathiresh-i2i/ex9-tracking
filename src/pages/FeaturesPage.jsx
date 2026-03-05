@@ -19,27 +19,25 @@ const FEATURES = [
 export default function FeaturesPage({ onBookDemo }) {
   return (
     <section className="page-section">
-      <div className="container">
-        <h1 className="page-title page-title--center">Features</h1>
-        <p className="page-lead page-lead--center">
-          Everything you need to spark demand with clear positioning and
-          consistent messaging.
-        </p>
-        <ul className="feature-list">
-          {FEATURES.map(({ title, description }) => (
-            <li key={title} className="feature-list__item">
-              <div className="feature-list__content">
-                <h2 className="feature-list__title">{title}</h2>
-                <p className="feature-list__text">{description}</p>
-              </div>
-            </li>
-          ))}
-        </ul>
-        <div className="page-actions page-actions--center">
-          <button type="button" className="btn btn--primary" onClick={onBookDemo}>
-            Book a demo
-          </button>
-        </div>
+      <h1 className="page-title page-title--center">Features</h1>
+      <p className="page-lead page-lead--center">
+        Everything you need to spark demand with clear positioning and
+        consistent messaging.
+      </p>
+      <ul className="feature-list">
+        {FEATURES.map(({ title, description }) => (
+          <li key={title} className="feature-list__item">
+            <div className="feature-list__content">
+              <h2 className="feature-list__title">{title}</h2>
+              <p className="feature-list__text">{description}</p>
+            </div>
+          </li>
+        ))}
+      </ul>
+      <div className="page-actions page-actions--center">
+        <button type="button" className="btn btn--primary" onClick={onBookDemo}>
+          Book a demo
+        </button>
       </div>
     </section>
   );
