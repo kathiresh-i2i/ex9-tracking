@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { BrowserRouter, Routes, Route, useNavigate, useLocation } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import Layout from "./components/Layout";
 import DemoModal from "./components/DemoModal";
 import HomePage from "./pages/HomePage";
@@ -10,26 +10,26 @@ import TermsPage from "./pages/TermsPage";
 
 function TrailingSlashRedirect() {
   const location = useLocation();
-  const navigate = useNavigate();
   useEffect(() => {
-    const { pathname } = location;
+    const { pathname, search, hash } = location;
     if (pathname !== "/" && pathname !== "" && !pathname.endsWith("/")) {
-      navigate(pathname + "/", { replace: true });
+      window.location.replace(pathname + "/" + search + hash);
     }
-  }, [location, navigate]);
+  }, [location]);
   return null;
 }
 
 function AppRoutes() {
   const [modalOpen, setModalOpen] = useState(false);
-  const navigate = useNavigate();
   const year = new Date().getFullYear();
 
   const handleBookDemo = () => setModalOpen(true);
   const handleModalClose = () => setModalOpen(false);
   const handleDemoSuccess = () => {
     setModalOpen(false);
-    setTimeout(() => navigate("/thanks/"), 400);
+    setTimeout(() => {
+      window.location.href = "/thanks/";
+    }, 400);
   };
 
   return (

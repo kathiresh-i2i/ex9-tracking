@@ -1,5 +1,3 @@
-import { Link } from "react-router-dom";
-
 export default function ThanksPage() {
   const steps = [
     { label: "Step 1", value: "We confirm your details" },
@@ -30,9 +28,9 @@ export default function ThanksPage() {
           </p>
         </div>
         <div className="page-actions">
-          <Link to="/" className="btn btn--primary">
+          <a href="/" className="btn btn--primary">
             Return to home
-          </Link>
+          </a>
         </div>
       </div>
     </section>

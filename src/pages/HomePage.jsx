@@ -1,5 +1,3 @@
-import { Link } from "react-router-dom";
-
 export default function HomePage({ onBookDemo }) {
   return (
     <>
@@ -19,9 +17,9 @@ export default function HomePage({ onBookDemo }) {
               >
                 Book a demo
               </button>
-              <Link to="/features/" className="btn btn--outline btn--lg">
+              <a href="/features/" className="btn btn--outline btn--lg">
                 See features
-              </Link>
+              </a>
             </div>
             <ul className="page-hero__bullets">
               <li>Capture what resonates with customers</li>

@@ -1,5 +1,3 @@
-import { Link } from "react-router-dom";
-
 export default function AboutPage({ onBookDemo }) {
   return (
     <section className="page-section page-section--centered">
@@ -20,9 +18,9 @@ export default function AboutPage({ onBookDemo }) {
           <button type="button" className="btn btn--primary" onClick={onBookDemo}>
             Book a demo
           </button>
-          <Link to="/features/" className="btn btn--outline">
+          <a href="/features/" className="btn btn--outline">
             View features
-          </Link>
+          </a>
         </div>
       </div>
     </section>

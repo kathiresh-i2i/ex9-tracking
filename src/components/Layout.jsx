@@ -1,4 +1,4 @@
-import { Outlet, Link, useLocation } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 
 const NAV_LINKS = [
   { to: "/", label: "Home" },
@@ -19,19 +19,19 @@ export default function Layout({ onBookDemo, year }) {
     <div className="site-layout">
       <header className="site-header">
         <div className="container site-header__inner">
-          <Link to="/" className="site-logo" aria-label="BrandSpark home">
+          <a href="/" className="site-logo" aria-label="BrandSpark home">
             BrandSpark
-          </Link>
+          </a>
           <nav className="site-nav" aria-label="Main">
             <ul className="site-nav__list">
               {NAV_LINKS.map(({ to, label }) => (
                 <li key={to}>
-                  <Link
-                    to={to}
+                  <a
+                    href={to}
                     className={`site-nav__link ${isActive(to) ? "site-nav__link--active" : ""}`}
                   >
                     {label}
-                  </Link>
+                  </a>
                 </li>
               ))}
             </ul>
@@ -56,9 +56,9 @@ export default function Layout({ onBookDemo, year }) {
       <footer className="site-footer">
         <div className="container site-footer__inner">
           <span className="site-footer__legal">
-            <Link to="/terms/" className="site-footer__link">
+            <a href="/terms/" className="site-footer__link">
               Terms of Service
-            </Link>
+            </a>
             {" · "}
             © {year} BrandSpark
           </span>
